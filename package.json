@@ -1,0 +1,12 @@
+{
+  "name": "cbtl_webhook_trigger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cbtl_webhook_trigger.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
