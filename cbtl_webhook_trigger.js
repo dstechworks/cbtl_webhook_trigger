@@ -3,7 +3,7 @@ const path = require('path');
 
 // Resolve full paths
 const backendPath = path.join(__dirname, 'backend', 'server.js');
-const frontendPath = path.join(__dirname, 'frontend', 'app.js');
+const frontendDir = path.join(__dirname, 'frontend');
 
 // Start backend
 exec(`node ${backendPath}`, (err, stdout, stderr) => {
@@ -11,14 +11,16 @@ exec(`node ${backendPath}`, (err, stdout, stderr) => {
         console.error(`Backend error: ${err.message}`);
         return;
     }
-    console.log(`Backend: ${stdout}`);
+    console.log(`Backend Output:\n${stdout}`);
+    if (stderr) console.error(`Backend STDERR:\n${stderr}`);
 });
 
-// Start frontend
-// exec(`node ${frontendPath}`, (err, stdout, stderr) => {
-//     if (err) {
-//         console.error(`Frontend error: ${err.message}`);
-//         return;
-//     }
-//     console.log(`Frontend: ${stdout}`);
-// });
+// Build frontend
+exec(`npm run build`, { cwd: frontendDir }, (err, stdout, stderr) => {
+    if (err) {
+        console.error(`Frontend build error: ${err.message}`);
+        return;
+    }
+    console.log(`Frontend Build Output:\n${stdout}`);
+    if (stderr) console.error(`Frontend Build STDERR:\n${stderr}`);
+});
