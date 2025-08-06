@@ -1,0 +1,58 @@
+async function triggerWebhookWithAxios() {
+    try {
+        const url = `${apiUrl}/displaygroup/${displayGroupId}/action/triggerWebhook`;
+        console.log(url);
+
+        const data = querystring.stringify({
+            triggerCode: 'trigger'
+        });
+
+        const headers = {
+            "Authorization": `Bearer ${accessToken}`
+        };
+
+        const response = await axios.post(url, data, { headers });
+
+        console.log("Axios POST response:", response.status);
+    } catch (error) {
+        console.error("Error in Axios POST request:", error);
+    }
+}
+
+const getAllColumnsData = () => {
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `http://209.38.120.187/api/dataset/data/${datasetid}`,
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        }
+    };
+
+    axios.request(config)
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+const getColumnIds = () => {
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `http://209.38.120.187/api/dataset/${datasetid}/column`,
+        headers: {
+            'Authorization': 'Bearer ' + accessToken
+        }
+    };
+
+    axios.request(config)
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
