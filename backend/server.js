@@ -9,7 +9,7 @@ const fs = require('fs');
 const app = express();
 
 // Middleware
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(cors());
 

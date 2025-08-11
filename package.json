@@ -4,7 +4,7 @@
   "description": "",
   "main": "cbtl_webhook_trigger.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node cbtl_webhook_trigger.js"
   },
   "keywords": [],
   "author": "",

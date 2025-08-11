@@ -1,26 +1,33 @@
-const { exec } = require('child_process');
+const { spawn } = require('child_process');
 const path = require('path');
 
-// Resolve full paths
+// Paths
 const backendPath = path.join(__dirname, 'backend', 'server.js');
 const frontendDir = path.join(__dirname, 'frontend');
 
 // Start backend
-exec(`node ${backendPath}`, (err, stdout, stderr) => {
-    if (err) {
-        console.error(`Backend error: ${err.message}`);
-        return;
-    }
-    console.log(`Backend Output:\n${stdout}`);
-    if (stderr) console.error(`Backend STDERR:\n${stderr}`);
+const backend = spawn('node', [backendPath]);
+
+backend.stdout.on('data', (data) => {
+    process.stdout.write(`📦 Backend: ${data}`);
 });
 
-// Build frontend
-exec(`npm run build`, { cwd: frontendDir }, (err, stdout, stderr) => {
-    if (err) {
-        console.error(`Frontend build error: ${err.message}`);
-        return;
+backend.stderr.on('data', (data) => {
+    process.stderr.write(`❌ Backend Error: ${data}`);
+});
+
+// Start frontend preview server (build must already be done)
+const frontend = spawn('npm', ['run', 'preview'], { cwd: frontendDir, shell: true });
+
+frontend.stdout.on('data', (data) => {
+    process.stdout.write(`🌐 Frontend: ${data}`);
+
+    const match = data.toString().match(/http:\/\/localhost:(\d+)/);
+    if (match) {
+        console.log(`🚀 Frontend running on port: ${match[1]}`);
     }
-    console.log(`Frontend Build Output:\n${stdout}`);
-    if (stderr) console.error(`Frontend Build STDERR:\n${stderr}`);
+});
+
+frontend.stderr.on('data', (data) => {
+    process.stderr.write(`❌ Frontend Error: ${data}`);
 });

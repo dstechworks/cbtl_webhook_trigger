@@ -49,7 +49,7 @@ function filterDropdown(query) {
 
 async function populateDisplayList() {
     try {
-        const response = await fetch('http://64.227.136.248:3013/getListOfDisplay');
+        const response = await fetch('/getListOfDisplay');
         if (!response.ok) throw new Error("Failed to fetch display list");
         const result = await response.json();
         displayOptions = result.data || [];
