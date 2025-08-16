@@ -41,7 +41,8 @@ build/Release
 # Dependency directories
 node_modules/
 backend/node_modules/
-frontend/node_modules/
+frontendDashboard/node_modules/
+frontendForServer/node_modules/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)

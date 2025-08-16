@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "username": "admin",
+    "password": "superuser",
+    "role": "superuser",
+    "display": ""
+  },
+  {
+    "id": "2",
+    "username": "alice",
+    "password": "alicepass",
+    "role": "user",
+    "display": "CBTL Menu Board GK2"
+  },
+  {
+    "id": "3",
+    "username": "bob",
+    "password": "bobpass",
+    "role": "superuser",
+    "display": ""
+  },
+  {
+    "id": "4",
+    "username": "hitesh",
+    "password": "hiteshpass",
+    "role": "superuser",
+    "display": ""
+  }
+]

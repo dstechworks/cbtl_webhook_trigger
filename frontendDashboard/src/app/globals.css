@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Optional: your custom styles */
+html,
+body {
+  height: 100%;
+  background-color: #f9fafb;
+}
+
+/* Custom utility classes */
+.bg-app {
+  background: linear-gradient(135deg, #ece9e6, #ffffff);
+}
+
+.card {
+  background: #ffffff;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  /* matches rounded-2xl */
+}
+
+.heading {
+  color: #333;
+}
+
+.label {
+  color: #444;
+}
+
+/* Custom keyframes + helpers */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Top alert (custom because of fixed transition) */
+.top-alert {
+  @apply fixed left-1/2 -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-b-lg font-medium text-base shadow-md transition-all z-[9999];
+  top: -60px;
+}
+
+.top-alert.show {
+  top: 0;
+}
+
+/* Loader text */
+.loader {
+  @apply mt-4 text-sm text-gray-600;
+}
