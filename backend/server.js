@@ -20,8 +20,6 @@ const API_URL = 'http://209.38.120.187/api';
 const CLIENT_ID = '8ee1bb19428bb0fc03a7563092ab2f1aa6807374';
 const CLIENT_SECRET = '17c3685b4baffabca7fdbd94656bda5741ffc3a3c3ea316549086ad77baf6d5f7de0fe92b21f9344cb4ca476ae472246f76c46c59c7542d696b95c9e12dfcf9bd6c7774e935e9fa9f09dae598ed5d2ee626969231a5f6582fa79338507929ff1f487b72d05e2730d705d415298c5819de6dbd3f02e1041f6a776c05963288a';
 
-const DISPLAY_GROUP_ID = 29;
-
 let accessToken;
 
 
@@ -102,7 +100,7 @@ async function triggerWebhook(displayId) {
         const url = `${API_URL}/displaygroup/${displayId}/action/triggerWebhook`;
 
         const response = await axios.post(url, querystring.stringify({
-            triggerCode: 'trigger'
+            triggerCode: 'trigger_dynamic_content'
         }), {
             headers: {
                 'Authorization': `Bearer ${accessToken}`

@@ -4,7 +4,7 @@ import AuthGuard from './components/AuthGuard';
 import Navbar from './components/Navbar';
 import Alert from './components/Alert';
 
-type Display = { id: string; display: string };
+type Display = { displayId: string; display: string };
 
 export default function Dashboard() {
   const [displays, setDisplays] = useState<Display[]>([]);
@@ -61,7 +61,7 @@ export default function Dashboard() {
         body: JSON.stringify({
           text,
           display: selectedDisplay.display,
-          displayId: selectedDisplay.id
+          displayId: selectedDisplay.displayId
         })
       });
 
@@ -136,7 +136,7 @@ export default function Dashboard() {
                 <div className="absolute top-full left-0 w-full max-h-52 bg-white border border-gray-300 rounded-b-xl shadow-md overflow-y-auto z-50">
                   {filtered.map((d) => (
                     <div
-                      key={`${d.id}-${d.display}`}
+                      key={`${d.displayId}-${d.display}`}
                       className="p-3 cursor-pointer hover:bg-gray-100"
                       onClick={() => {
                         setSelected(d.display);
