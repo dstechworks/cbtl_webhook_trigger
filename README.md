@@ -2,6 +2,7 @@
 
 ### Note:
 **Frontend for server folder** refers to the frontend interface we created to display dynamic text via a web URL.
+**Verion 4 xtravu DSS app install** app download directly from repo.
 
 ---
 
