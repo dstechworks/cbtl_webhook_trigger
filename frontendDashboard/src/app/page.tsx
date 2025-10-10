@@ -4,7 +4,7 @@ import AuthGuard from './components/AuthGuard';
 import Navbar from './components/Navbar';
 import Alert from './components/Alert';
 
-type Display = { displayId: string; display: string };
+type Display = { displayId: string; display: string; description: string };
 
 export default function Dashboard() {
   const [displays, setDisplays] = useState<Display[]>([]);
@@ -61,7 +61,8 @@ export default function Dashboard() {
         body: JSON.stringify({
           text,
           display: selectedDisplay.display,
-          displayId: selectedDisplay.displayId
+          displayId: selectedDisplay.displayId,
+          description: selectedDisplay.description
         })
       });
 

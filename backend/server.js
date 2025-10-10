@@ -68,7 +68,7 @@ async function getApiData() {
         }
         console.log(`Total Items Fetched :: ${results.length}`);
         let obj = [];
-        results.map((d) => { obj.push({ "displayId": d.displayId, "display": d.display }) });
+        results.map((d) => { obj.push({ "displayId": d.displayId, "display": d.display, "description": d.description }) });
         return obj;
     } catch (error) {
         console.error(`Error fetching :`, error.message);
@@ -87,7 +87,7 @@ async function sendDataToServer(clientData) {
         });
 
         if (clientData?.displayId) {
-            await triggerWebhook(clientData?.displayId);
+            await triggerWebhook(clientData?.displayId, clientData?.description);
         }
     } catch (error) {
         console.error('Error sending data:', error.message);
@@ -95,12 +95,14 @@ async function sendDataToServer(clientData) {
 }
 
 // Function to trigger webhook
-async function triggerWebhook(displayId) {
+async function triggerWebhook(displayId, description) {
     try {
         const url = `${API_URL}/displaygroup/${displayId}/action/triggerWebhook`;
 
+        console.log('Triggering webhook code:', description);
+
         const response = await axios.post(url, querystring.stringify({
-            triggerCode: 'trigger_dynamic_content'
+            triggerCode: description
         }), {
             headers: {
                 'Authorization': `Bearer ${accessToken}`

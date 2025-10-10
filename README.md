@@ -40,8 +40,3 @@
 
 ---
 
-✅ **Summary**
-- Two layouts: `Menu Board` and `Happy Birthday`
-- Trigger codes:
-  - `HBL_gk2` → for Happy Birthday Layout  
-  - `trigger_dynamic_content_gk2` → for dynamic display handling
